@@ -1,0 +1,14 @@
+{
+  "name": "playwright-p--api",
+  "version": "1.0.0",
+  "description": "<h1>Link API: https://restful-booker.herokuapp.com/apidoc/index.html</h1>",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.44.1",
+    "@types/node": "^20.14.2"
+  }
+}
