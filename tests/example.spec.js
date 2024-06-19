@@ -11,7 +11,7 @@ test('consult registered reservations', async ({ request }) => {
 });
 
 test('consult registered reservations by id', async ({ request }) => {
-  const response = await request.get('917');
+  const response = await request.get('1662');
 
   const jsonBody = await response.json();
   console.log(jsonBody);
@@ -43,4 +43,37 @@ test('consult registered reservations by id valid fields', async ({ request }) =
 
   expect(response.ok()).toBeTruthy();
   expect(response.status()).toBe(200);
+});
+
+test('create booking', async ({ request }) => {
+  const response = await request.post('', {
+    data: {
+      "firstname" : "Andrew",
+      "lastname" : "Test",
+      "totalprice" : 444,
+      "depositpaid" : true,
+      "bookingdates" : {
+          "checkin" : "2018-01-01",
+          "checkout" : "2019-01-01"
+      },
+      "additionalneeds" : "Breakfast"
+    }
+    
+  });
+  console.log(await response.json());
+  
+
+  expect(response.ok()).toBeTruthy();
+  expect(response.status()).toBe(200);
+  
+  const jsonBody = await response.json();
+
+  expect(jsonBody.booking.firstname).toBe('Andrew');
+  expect(jsonBody.booking.lastname).toBe('Test');
+  expect(jsonBody.booking.totalprice).toBe(444);
+  expect(jsonBody.booking.depositpaid).toBeTruthy();
+  expect(jsonBody.booking.bookingdates.checkin).toBe('2018-01-01');
+  expect(jsonBody.booking.bookingdates.checkout).toBe('2019-01-01');
+  expect(jsonBody.booking.additionalneeds).toBe('Breakfast');
+  
 });
