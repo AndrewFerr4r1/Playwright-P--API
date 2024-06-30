@@ -4,7 +4,7 @@ const { test, expect } = require('@playwright/test');
 var tokenResponse;
 var id;
 
-test('consult registered reservations', async ({ request }) => {
+test('consult registered reservations @regressivo', async ({ request }) => {
   const response = await request.get('booking');
 
   console.log(await response.json());
